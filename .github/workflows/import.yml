@@ -1,0 +1,31 @@
+name: Import prepared portfolio application
+on:
+  push:
+    branches: [main]
+    paths: [source-bundle.b64]
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  import:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Extract source archive
+        run: |
+          python - <<'PY'
+          import base64, lzma, tarfile, io
+          from pathlib import Path
+          raw=base64.b64decode(Path("source-bundle.b64").read_text().strip())
+          with tarfile.open(fileobj=io.BytesIO(lzma.decompress(raw)), mode="r:") as f:
+              f.extractall(".", filter="data")
+          for p in ["source-bundle.b64", ".gitkeep", ".github/workflows/import.yml"]:
+              Path(p).unlink(missing_ok=True)
+          PY
+      - name: Publish source files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "feat: publish complete Product Decision Lab app" || exit 0
+          git push
