@@ -59,3 +59,7 @@ All sample figures are fictional. The browser stores scenario inputs in `localSt
 HTML, CSS, vanilla JavaScript, SVG charts, browser localStorage. No external libraries. MIT license.
 
 **Portfolio context:** Product ownership, automation, business-case reasoning, and insurance operations domain experience.
+
+## Status and limits
+
+This is an implemented portfolio prototype: the repository includes the static calculator, deterministic financial-estimation logic, fictional inputs, a screenshot, and an automated test script. Its outputs depend on the supplied assumptions and the simplified model above; they do not establish realized savings or a validated investment decision. No real-stakeholder validation study or production deployment evidence is included.
