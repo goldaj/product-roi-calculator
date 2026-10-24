@@ -42,3 +42,18 @@ Ce dernier échange établit la règle suivante pour le projet : `AGENTS.md` doi
 - **Ne pas inventer :** un résumé ne devient jamais un verbatim. Une date de session sans heure précise reste datée au jour.
 - **Pour compléter fidèlement :** importer l'export authentique des discussions ChatGPT pertinentes ; filtrer les secrets et données privées avant de les publier sur ce dépôt public. Conserver les rôles, l'ordre et les timestamps bruts.
 - **Mise à jour future :** ajouter des sections `Date — Utilisateur (verbatim)` et `Date — Assistant (verbatim)` à partir d'une source explicite. Si seules les décisions sont disponibles, marquer `Résumé reconstruit` et référencer leur provenance.
+
+## 2026-10-24 : revue multi-dépôts en parallèle de Codex (heure non attestée)
+
+**Utilisateur (verbatim, conversation présente)**
+
+> tu vois tout le boulot qu'on a fait sur la conversation Avancement projets codex ?
+> Tu vas refaire la même chose sur TOUT mon repo git. Tu vas commencer par les projets les plus gros, regarder ce que tu peux faire dessus et le faire sur ta branch (même consignes que sur l'autre conversation).
+> Tu vas ensuite me faire un rapport très succint des projets que t'as touché et de ce que t'as avancé dessus.
+> Amuse toi !
+
+**Assistant (résumé reconstruit, non verbatim)**
+
+Valeurs par défaut cohérentes lorsque les hypothèses sont nulles ou absentes; tests supplémentaires. Travail isolé sur `chatgpt/review-20261024`, base inchangée.
+
+**Validation et confiance** : confiance élevée dans la modification ciblée ; ne pas supposer des tests locaux exécutés. Vérifier GitHub Actions et comparer avec le travail Codex avant intégration. Ne pas fusionner automatiquement. Aucun secret ajouté.
