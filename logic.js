@@ -12,6 +12,12 @@
  const payback=monthlyNet>0?p.buildCost/monthlyNet:null;
  const threeYears=monthlyNet*36-p.buildCost;
  const cashflow=Array.from({length:37},(_,month)=>({month,value:month*monthlyNet-p.buildCost}));
- return {assumptions:p,eligible,timeSavings,errorSavings,grossSavings,monthlyNet,annualNet,roi,payback,threeYears,cashflow};}
+ // Volume mensuel nécessaire pour rembourser l'investissement en 12 mois.
+ // À hypothèses constantes et dossier moyen identique.
+ const savingsPerCase=p.minutes/60*p.hourly+p.errorRate/100*p.errorReduction/100*p.errorCost;
+ const unitGain=p.automation/100*p.adoption/100*savingsPerCase;
+ const monthlyTarget=p.maintenance+p.buildCost/12;
+ const breakEvenVolume12m=monthlyTarget<=0?0:unitGain>0&&Number.isFinite(unitGain)?Math.ceil(monthlyTarget/unitGain):null;
+ return {assumptions:p,eligible,timeSavings,errorSavings,grossSavings,monthlyNet,annualNet,roi,payback,threeYears,cashflow,breakEvenVolume12m};}
  return {defaults,calculate};
 });
