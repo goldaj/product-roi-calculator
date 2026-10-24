@@ -1,6 +1,6 @@
 (function(root,factory){const api=factory();if(typeof module==='object'&&module.exports)module.exports=api;root.RoiLogic=api;})(typeof globalThis!=='undefined'?globalThis:this,function(){
  const defaults={volume:1300,minutes:7,hourly:42,automation:65,adoption:85,errorRate:3,errorCost:95,errorReduction:70,buildCost:26000,maintenance:550};
- function calculate(raw){const p={};for(const [k,v] of Object.entries(defaults)){const n=Number(raw[k]);p[k]=Number.isFinite(n)?Math.max(0,n):v;}for(const k of ['automation','adoption','errorRate','errorReduction'])p[k]=Math.min(100,p[k]);
+ function calculate(raw){raw=raw??{};const p={};for(const [k,v] of Object.entries(defaults)){const n=Number(raw[k]);p[k]=Number.isFinite(n)?Math.max(0,n):v;}for(const k of ['automation','adoption','errorRate','errorReduction'])p[k]=Math.min(100,p[k]);
  const eligible=p.volume*(p.automation/100)*(p.adoption/100);
  const timeSavings=eligible*p.minutes/60*p.hourly;
  // Error reduction applies only to automation-eligible cases.
